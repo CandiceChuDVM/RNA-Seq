@@ -19,6 +19,5 @@ To verify that the pipeline is installed and up-to-date, navigate to the `sequen
 modifying the cut commmand on [this line](https://github.com/chapkinlab/sequencing-pipeline/blob/80061158cfebb1dda2c7806779b53466573cc337/main-scripts/concat.sh#L34) from 1-4 to 1-5 in `concat.sh`.   
 remove the # commenting character) [this line](https://github.com/chapkinlab/sequencing-pipeline/blob/3155b43c4877023fc7a6b5699b77dd42d9bc2389/main-scripts/concat.sh#L50) in your local copy of the concat.sh script and then run it.  
 `mkdir FastqFile_processed`  
-`./sequencing-pipeline/main-scripts/concat.sh ./FastqFile/ ./FastqFile_processed concat.sh_processed_list.txt`   
-FastqFile/Sample_DMSO1/DMSO1_AGTTCC_L001_R1_001.fastq.gz
-FastqFile/Sample_DMSO1/DMSO1_AGTTCC_L002_R1_002.fastq.gz
+`./sequencing-pipeline/main-scripts/concat.sh ./FastqFile/ ./FastqFile_processed`   
+
