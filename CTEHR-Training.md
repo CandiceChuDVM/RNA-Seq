@@ -93,6 +93,7 @@ Edit `candice_list`:
     )    
 
 Run `map.sh`:   
+
      $ mv Homo_sapiens.GRCh38.84.gtf.gz FastqFile_processed/  
      $ mv Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz FastqFile_processed/  
      $ gunzip Homo_sapiens.GRCh38.84.gtf.gz   
