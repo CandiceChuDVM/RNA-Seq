@@ -1,4 +1,4 @@
-All contents are adapted from [chapkinlab](https://github.com/chapkinlab/sequencing-pipeline/wiki). 
+All blockquotes are adapted from [chapkinlab](https://github.com/chapkinlab/sequencing-pipeline/wiki). For example:   
 
 >This is a guide to get you started quickly with beginning to use our sequencing pipeline for analyzing your RNA-seq datasets. 
 
