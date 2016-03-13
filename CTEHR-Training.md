@@ -17,8 +17,8 @@ The pipeline makes use of several external open source tools that you'll need to
 +FastQC  
 +Python (with the Pandas library)  
 You'll also need a reference genome and annotation. You can obtain that from [Ensembl](http://useast.ensembl.org/info/data/ftp/index.html).  
-`wget ftp://ftp.ensembl.org/pub/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz`  
-`wget ftp://ftp.ensembl.org/pub/release-84/gtf/homo_sapiens/Homo_sapiens.GRCh38.84.gtf.gz`     
+    `wget ftp://ftp.ensembl.org/pub/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz`  
+    `wget ftp://ftp.ensembl.org/pub/release-84/gtf/homo_sapiens/Homo_sapiens.GRCh38.84.gtf.gz`     
 ##20160311
 To verify that the pipeline is installed and up-to-date, navigate to the `sequencing-pipeline` directory, and issue a `git pull`. An `Already up-to-date` message confirms the update.  
 
