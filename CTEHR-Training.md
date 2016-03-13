@@ -93,12 +93,12 @@ Edit `candice_list`:
     )    
 
 Run `map.sh`:   
-    $ mv Homo_sapiens.GRCh38.84.gtf.gz FastqFile_processed/  
-    $ mv Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz FastqFile_processed/  
-    $ gunzip Homo_sapiens.GRCh38.84.gtf.gz   
-    $ gunzip Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz   
-    $ cd ../sequencing-pipeline/
-    $ main-scripts/map.sh lists/candice_list 2> err.log | tee out.log  
+     $ mv Homo_sapiens.GRCh38.84.gtf.gz FastqFile_processed/  
+     $ mv Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz FastqFile_processed/  
+     $ gunzip Homo_sapiens.GRCh38.84.gtf.gz   
+     $ gunzip Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz   
+     $ cd ../sequencing-pipeline/
+     $ main-scripts/map.sh lists/candice_list 2> err.log | tee out.log  
 
 #6. Analysis Summarization  
 #7. Gene Differential Expression Analysis  
