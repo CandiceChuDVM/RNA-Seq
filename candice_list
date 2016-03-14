@@ -1,0 +1,9 @@
+species="grch38-human"
+samplelist=(\
+/home/candice/Assignment/FastqFile_processed/DMSO1.fastq.bz2 \  
+/home/candice/Assignment/FastqFile_processed/DMSO2.fastq.bz2 \  
+/home/candice/Assignment/FastqFile_processed/DMSO3.fastq.bz2 \  
+/home/candice/Assignment/FastqFile_processed/TCDD1.fastq.bz2 \  
+/home/candice/Assignment/FastqFile_processed/TCDD2.fastq.bz2 \  
+/home/candice/Assignment/FastqFile_processed/TCDD3.fastq.bz2 \  
+) 
