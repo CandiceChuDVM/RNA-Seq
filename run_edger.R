@@ -16,6 +16,7 @@ thisFile <- function() {
 }
 
 #args = c("lists/organoid","keys/organoid.csv")
+#args = c("ahr-list","ahr-key")
 args = c("lists/candice_list","keys/candice-key.csv")
 
 # Get counts file from analysis/fname/fname.T.csv
@@ -42,13 +43,13 @@ sel = grepl("MT-.*", rownames(counts)) + grepl("ERCC-.*", rownames(counts)) + gr
 counts = counts[!sel,]
 # counts = counts[!sel,!grepl("6123", names(counts))]
 # key = key[!grepl("6123", rownames(key)),]
-ename = "edger-pair-treatment"
-factors = key[order(rownames(key)), c(sample,type)]
-factors$type = factor(factors$type)
+ename = "edger-pair-treatment2"
+factors = key[order(rownames(key)), c("type", "treatment")]
+# factors$idnum = factor(factors$idnum)
 # factors$treatment = relevel(factors$treatment, "placebo")
-design = model.matrix(~sample+type, data=factors)
-groups = factors$type
-#groups = factor(paste(key$tissue,key$location,sep='.'))
+design = model.matrix(~type+treatment, data=factors)
+groups = factors$treatment
+#groups = factor(paste(key$type,key$treatment,sep='.'))
 #############################################
 system(paste("mkdir -p ",file.path("analysis",bname,ename)))
 file.copy(thisFile(), file.path("analysis", bname, ename, "edger_script.R"))
@@ -59,20 +60,20 @@ counts = counts[,order(names(counts))]
 ########################
 # run Pairwise analysis ...
 ########################
-# y = DGEList(counts=counts, group=factors)
-# y = calcNormFactors(y)
-# y = estimateCommonDisp(y)
-# y = estimateTagwiseDisp(y)
+y = DGEList(counts=counts, group=groups)
+y = calcNormFactors(y)
+y = estimateCommonDisp(y)
+y = estimateTagwiseDisp(y)
 
 ########################
 # or run GLM analysis
 ########################
-y = DGEList(counts=counts)
-y = calcNormFactors(y)
-y = estimateGLMCommonDisp(y, design)
-y = estimateGLMTrendedDisp(y, design)
-y = estimateGLMTagwiseDisp(y, design)
-fit = glmFit(y, design)
+#y = DGEList(counts=counts)
+#y = calcNormFactors(y)
+#y = estimateGLMCommonDisp(y, design)
+#y = estimateGLMTrendedDisp(y, design)
+#y = estimateGLMTagwiseDisp(y, design)
+#fit = glmFit(y, design)
 
 ## get normalized counts for each group for outputting to summary spreadsheet
 scaled.counts = data.frame(mapply(`*`, counts, y$samples$lib.size *
@@ -88,9 +89,9 @@ dfss = sapply(dfs, colMeans)
 #### Write results
 run_analysis = function(outfile, contrast=NULL, coef=NULL) {
   # Pairwise test
-    # lrt = exactTest(y)
+   lrt = exactTest(y)
   # GLM Test
-    lrt = glmLRT(fit, contrast=contrast, coef=coef) 
+   # lrt = glmLRT(fit, contrast=contrast, coef=coef) 
 
   ot1 = topTags(lrt,n=nrow(counts),sort.by="PValue")$table
   #if (is.null(contrast)) {
@@ -122,8 +123,8 @@ run_analysis = function(outfile, contrast=NULL, coef=NULL) {
 meta_run = function(coef) {run_analysis(file.path("analysis",bname,ename,paste(colnames(design)[coef],".csv",sep="")),coef=coef)}
 
 meta_run(dim(design)[2])
-meta_run(dim(design)[2]-1)
-meta_run(dim(design)[2]-2)
+#meta_run(dim(design)[2]-1)
+#meta_run(dim(design)[2]-2)
 
 system(paste("cat",file.path("analysis",bname,ename,"summary.txt")))
 
@@ -138,3 +139,4 @@ dev.off()
 png(file.path("analysis",bname,ename,"edger-bcv.png"))
 p = plotBCV(y)
 dev.off()
+
